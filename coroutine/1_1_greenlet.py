@@ -19,7 +19,6 @@ def func2():
 
 
 
-
 gr1 = greenlet(func1)
 gr2 = greenlet(func2)
 
