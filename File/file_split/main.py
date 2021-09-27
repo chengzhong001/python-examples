@@ -1,11 +1,13 @@
 
+import mmap
 from pathlib import Path
 import time
 
 
 newfile = "test_{}.txt"
-file_path = "The_Great_Qin_Empire_Bigsize.txt"
+file_path = "The_Great_Qin_Empire.txt"
 # file_path = "test_1.txt"
+
 
 file = Path(file_path)
 
@@ -14,7 +16,6 @@ file = Path(file_path)
 print(file.absolute())
 # 文件当前路径
 print(file.cwd())
-
 
 
 # 文件状态
@@ -29,7 +30,6 @@ split_size = 1024 * 1024 * 1024 * 6.5
 split_cnt = file.stat().st_size // split_size + 1
 
 start_order = 1
-
 
 
 # 上次访问的时间
@@ -48,22 +48,34 @@ format_time = time.strftime("%Y-%m-%d %H:%M:%S", struct_time)
 print(format_time)
 
 
+def file_write(file, line):
+    with open(file, "a", encoding="utf-8") as f:
+        f.write(line)
+
+
 def write_file(point=0, split_file=newfile.format(start_order)):
     with open(file_path, mode="r", encoding="utf-8") as rf:
         rf.seek(point)
         global start_order
         with open(split_file, mode="w", encoding="utf-8") as wf:
-            while Path(split_file).stat().st_size < split_size:
-                wf.write(rf.readline())
-        print(f"拆完第{start_order}个文件")
-        start_order += 1
+            while Path(split_file).stat().st_size < 1024*1024:
+                line = rf.readline()
+                if not line:
+                    return None
+                wf.write(line)
         point = rf.tell()
-        new_split_file = newfile.format(start_order)
-        return write_file(point, new_split_file)
+
+    print(f"拆完第{start_order}个文件")
+    start_order += 1
+    
+    new_split_file = newfile.format(start_order)
+    return write_file(point, new_split_file)
 
 
 splitfile = newfile.format(start_order)
+
 print(splitfile)
 
-tell = write_file(0, splitfile)
+
+write_file(0, splitfile)
 # print(tell)
