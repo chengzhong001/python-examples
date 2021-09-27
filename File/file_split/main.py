@@ -1,16 +1,11 @@
 
-import mmap
 from pathlib import Path
 import time
 
-
 newfile = "test_{}.txt"
 file_path = "The_Great_Qin_Empire.txt"
-# file_path = "test_1.txt"
-
 
 file = Path(file_path)
-
 
 # 文件绝对路径
 print(file.absolute())
@@ -23,7 +18,7 @@ print(file.stat())
 
 # 文件大小
 print(file.stat().st_size/1024/1024)
-
+# 拆分文件大小
 split_size = 1024 * 1024 * 1024 * 6.5
 
 # 拆多少份
@@ -64,12 +59,11 @@ def write_file(point=0, split_file=newfile.format(start_order)):
                     return None
                 wf.write(line)
         point = rf.tell()
-
-    print(f"拆完第{start_order}个文件")
-    start_order += 1
-    
-    new_split_file = newfile.format(start_order)
-    return write_file(point, new_split_file)
+        print(f"拆完第{start_order}个文件")
+        start_order += 1
+        
+        new_split_file = newfile.format(start_order)
+        return write_file(point, new_split_file)
 
 
 splitfile = newfile.format(start_order)
@@ -78,4 +72,4 @@ print(splitfile)
 
 
 write_file(0, splitfile)
-# print(tell)
+
