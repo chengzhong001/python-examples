@@ -4,18 +4,19 @@ import datetime
 def test1():
     str_value = "hello，python coders"
     print(f"{str_value = }")
+    # str_value = 'hello，python coders'
 
 
 def test2():
     num_value = 123
     print(f"{num_value % 2 = }")
+    # num_value % 2 = 1
 
 
 def test3():
     today = datetime.date.today()
-    print(f"{today: %Y%m%d}")
-    # 20211019
-    print(f"{today =: %Y%m%d}")
+    print(f"{today: %Y%m%d}")       # 20211019
+    print(f"{today =: %Y%m%d}")     # today = 20211104
 
 
 def test4():
@@ -39,7 +40,7 @@ def test6():
     print(f'{x:>10}')   # 右对齐，左边补空格
     print(f'{x:*<10}')  # 左对齐，右边补*
     print(f'{x:=^10}')  # 居中，左右补=
-    print(f'{x:~^{n}}') # 可以传入变量 n
+    print(f'{x:~^{n}}')  # 可以传入变量 n
 
 
 def test7():
