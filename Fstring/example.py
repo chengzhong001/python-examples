@@ -15,8 +15,8 @@ def test2():
 
 def test3():
     today = datetime.date.today()
-    print(f"{today: %Y%m%d}")       # 20211019
-    print(f"{today =: %Y%m%d}")     # today = 20211104
+    print(f"{today: %Y%m%d}")  # 20211019
+    print(f"{today =: %Y%m%d}")  # today = 20211104
 
 
 def test4():
@@ -30,21 +30,21 @@ def test4():
 
 def test5():
     num_value = 123.456
-    print(f'{num_value = :.2f}')    # 保留 2 位小数
-    nested_format = ".2f"           # 可以作为变量
-    print(f'{num_value:{nested_format}}')
+    print(f"{num_value = :.2f}")  # 保留 2 位小数
+    nested_format = ".2f"  # 可以作为变量
+    print(f"{num_value:{nested_format}}")
 
 
 def test6():
-    x, n = 'test', 10
-    print(f'{x:>10}')   # 右对齐，左边补空格
-    print(f'{x:*<10}')  # 左对齐，右边补*
-    print(f'{x:=^10}')  # 居中，左右补=
-    print(f'{x:~^{n}}')  # 可以传入变量 n
+    x, n = "test", 10
+    print(f"{x:>10}")  # 右对齐，左边补空格
+    print(f"{x:*<10}")  # 左对齐，右边补*
+    print(f"{x:=^10}")  # 居中，左右补=
+    print(f"{x:~^{n}}")  # 可以传入变量 n
 
 
 def test7():
-    x = '中'
+    x = "中"
     print(f"{x!s}")  # 相当于 str(x)
     print(f"{x!r}")  # 相当于 repr(x)
 
@@ -52,10 +52,10 @@ def test7():
 def test8():
     class MyClass:
         def __format__(self, format_spec) -> str:
-            print(f'MyClass __format__ called with {format_spec=!r}')
+            print(f"MyClass __format__ called with {format_spec=!r}")
             return "MyClass()"
 
-    print(f'{MyClass():bala bala  %%MYFORMAT%%}')
+    print(f"{MyClass():bala bala  %%MYFORMAT%%}")
 
 
 if __name__ == "__main__":
