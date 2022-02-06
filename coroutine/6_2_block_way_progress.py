@@ -36,4 +36,4 @@ if __name__ == '__main__':
     start_time = time.time()
     process_way()
     end_time = time.time()
-    print("time-consuming： ", end_time-start_time)
+    print("time-consuming: ", end_time-start_time)
